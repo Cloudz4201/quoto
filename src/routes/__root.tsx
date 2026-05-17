@@ -72,8 +72,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "JobSlip | Simple Job Management App" },
-      { name: "description", content: "JobSlip is a simple, modern job management app designed to help you create, track, and manage work faster." },
+      { title: "JobSlip | Simple Quoting App for Tradies" },
+      { name: "description", content: "JobSlip is a simple, modern quoting app for tradies. Build, send and track quotes in seconds — with Xero, ServiceM8 and the tools you already use." },
       { property: "og:site_name", content: "JobSlip" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
