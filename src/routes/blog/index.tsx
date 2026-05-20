@@ -11,6 +11,28 @@ const BLOG_DESCRIPTION =
   "Honest guides, comparisons and how-tos on quoting apps, tradie software and winning more work — from the team at Quoto.";
 const BLOG_OG_IMAGE = absoluteUrl("/og-image.jpg");
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": `${BLOG_URL}#blog`,
+  name: BLOG_TITLE,
+  description: BLOG_DESCRIPTION,
+  url: BLOG_URL,
+  inLanguage: "en-AU",
+  publisher: { "@id": `${absoluteUrl("/")}#organization` },
+};
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: posts.map((post, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: absoluteUrl(`/blog/${post.slug}`),
+    name: post.title,
+  })),
+};
+
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
@@ -27,6 +49,10 @@ export const Route = createFileRoute("/blog/")({
       { name: "twitter:image", content: BLOG_OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: BLOG_URL }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(blogSchema) },
+      { type: "application/ld+json", children: JSON.stringify(itemListSchema) },
+    ],
   }),
   component: BlogIndexPage,
 });

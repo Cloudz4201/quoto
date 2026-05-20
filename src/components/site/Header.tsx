@@ -7,6 +7,7 @@ const navLinks = [
   { href: "/#how", label: "How it works" },
   { href: "/#pricing", label: "Pricing" },
   { to: "/blog" as const, label: "Blog" },
+  { to: "/support" as const, label: "Support" },
   { href: "/#download", label: "Download" },
 ];
 

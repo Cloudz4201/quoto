@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { posts } from "@/data/blog/posts";
+import { trades } from "@/data/trades/trades";
 import { SITE_URL } from "@/lib/site";
 
 const BASE_URL = SITE_URL;
@@ -13,6 +14,12 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: Entry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/for", changefreq: "monthly", priority: "0.8" },
+          ...trades.map((t) => ({
+            path: `/for/${t.slug}`,
+            changefreq: "monthly",
+            priority: "0.8",
+          })),
           { path: "/blog", changefreq: "weekly", priority: "0.8" },
           ...posts.map((p) => ({
             path: `/blog/${p.slug}`,
@@ -20,6 +27,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             priority: "0.7",
             lastmod: p.updatedAt ?? p.publishedAt,
           })),
+          { path: "/support", changefreq: "monthly", priority: "0.7" },
           { path: "/privacy-policy", changefreq: "yearly", priority: "0.5" },
           { path: "/terms-and-conditions", changefreq: "yearly", priority: "0.5" },
         ];

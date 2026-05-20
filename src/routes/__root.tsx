@@ -10,10 +10,15 @@ import {
 
 import appCss from "../styles.css?url";
 import {
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_WIDTH,
+  SITE_COUNTRY,
+  SITE_COUNTRY_NAME,
   SITE_DESCRIPTION,
   SITE_LANG,
   SITE_LOCALE,
   SITE_NAME,
+  SITE_SAME_AS,
   SITE_THEME_COLOR,
   SITE_URL,
   SUPPORT_EMAIL,
@@ -82,21 +87,44 @@ const ROOT_OG_IMAGE = absoluteUrl("/og-image.jpg");
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   url: SITE_URL,
-  logo: absoluteUrl("/favicon.png"),
+  logo: {
+    "@type": "ImageObject",
+    url: absoluteUrl("/favicon.png"),
+    width: 512,
+    height: 512,
+  },
   email: SUPPORT_EMAIL,
   description: SITE_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: SITE_COUNTRY,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: SITE_COUNTRY_NAME,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: SUPPORT_EMAIL,
+    contactType: "customer support",
+    areaServed: SITE_COUNTRY,
+    availableLanguage: ["English"],
+  },
+  ...(SITE_SAME_AS.length > 0 ? { sameAs: SITE_SAME_AS } : {}),
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
   inLanguage: SITE_LANG,
-  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -117,9 +145,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: SITE_LOCALE },
       { property: "og:image", content: ROOT_OG_IMAGE },
       { property: "og:image:alt", content: `${SITE_NAME} — simple quoting app for tradies` },
+      { property: "og:image:width", content: OG_IMAGE_WIDTH },
+      { property: "og:image:height", content: OG_IMAGE_HEIGHT },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: ROOT_OG_IMAGE },
-      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

@@ -27,20 +27,16 @@ export const Route = createFileRoute("/blog/$slug")({
     const ogImage = absoluteUrl("/og-image.jpg");
     const articleSchema = {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "BlogPosting",
       headline: post.title,
       description: post.description,
       datePublished: post.publishedAt,
       dateModified: post.updatedAt ?? post.publishedAt,
       inLanguage: "en-AU",
       image: ogImage,
-      author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-      publisher: {
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: SITE_URL,
-        logo: { "@type": "ImageObject", url: absoluteUrl("/favicon.png") },
-      },
+      url,
+      author: { "@id": `${SITE_URL}/#organization` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
       mainEntityOfPage: { "@type": "WebPage", "@id": url },
     };
     const breadcrumbSchema = {

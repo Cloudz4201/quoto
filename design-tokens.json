@@ -1,0 +1,191 @@
+{
+  "$schema": "https://design-tokens.org/schema.json",
+  "$comment": "Quoto brand design tokens — source of truth for the Quoto website and the Quoto app. Colors are expressed in OKLCH (canonical, matches src/styles.css) with sRGB hex fallbacks for platforms that don't support OKLCH (React Native, Flutter, native).",
+  "meta": {
+    "name": "Quoto Design System",
+    "version": "1.0.0",
+    "brand": {
+      "name": "Quoto",
+      "tagline": "Simple quoting app for tradies",
+      "url": "https://quoto.app"
+    }
+  },
+
+  "color": {
+    "brand": {
+      "primary":      { "hex": "#4F6BFF", "oklch": "oklch(0.58 0.21 258)", "description": "Quoto indigo blue — primary brand colour, CTAs, links, focus rings, app icon background." },
+      "primaryHover": { "hex": "#3D5BF2", "oklch": "oklch(0.54 0.21 258)", "description": "Primary in pressed/hover state — 90% of primary." },
+      "cream":        { "hex": "#FAFAF7", "oklch": "oklch(0.987 0.003 90)", "description": "Warm off-white — page background, used in manifest as background_color." },
+      "navy":         { "hex": "#041638", "oklch": "oklch(0.21 0.07 260)", "description": "Deep navy — primary text colour on light surfaces." },
+      "accent":       { "hex": "#FFC233", "oklch": "oklch(0.83 0.16 80)",  "description": "Yellow accent — used in feature illustrations alongside indigo." }
+    },
+
+    "light": {
+      "background":            { "hex": "#FAFAF7", "oklch": "oklch(0.987 0.003 90)" },
+      "foreground":            { "hex": "#041638", "oklch": "oklch(0.21 0.07 260)" },
+      "card":                  { "hex": "#FFFFFF", "oklch": "oklch(1 0 0)" },
+      "cardForeground":        { "hex": "#041638", "oklch": "oklch(0.21 0.07 260)" },
+      "popover":               { "hex": "#FFFFFF", "oklch": "oklch(1 0 0)" },
+      "popoverForeground":     { "hex": "#041638", "oklch": "oklch(0.21 0.07 260)" },
+      "primary":               { "hex": "#4F6BFF", "oklch": "oklch(0.58 0.21 258)" },
+      "primaryForeground":     { "hex": "#FFFFFF", "oklch": "oklch(1 0 0)" },
+      "secondary":             { "hex": "#EDF2F8", "oklch": "oklch(0.96 0.01 250)" },
+      "secondaryForeground":   { "hex": "#041638", "oklch": "oklch(0.21 0.07 260)" },
+      "muted":                 { "hex": "#EDF2F8", "oklch": "oklch(0.96 0.01 250)" },
+      "mutedForeground":       { "hex": "#596475", "oklch": "oklch(0.5 0.03 258)" },
+      "accent":                { "hex": "#DEF0FF", "oklch": "oklch(0.95 0.04 258)" },
+      "accentForeground":      { "hex": "#4F6BFF", "oklch": "oklch(0.58 0.21 258)" },
+      "destructive":           { "hex": "#E7000B", "oklch": "oklch(0.577 0.245 27.325)" },
+      "destructiveForeground": { "hex": "#F8FAFC", "oklch": "oklch(0.984 0.003 247.858)" },
+      "border":                { "hex": "#E1E5EA", "oklch": "oklch(0.92 0.008 258)" },
+      "input":                 { "hex": "#E1E5EA", "oklch": "oklch(0.92 0.008 258)" },
+      "ring":                  { "hex": "#4F6BFF", "oklch": "oklch(0.58 0.21 258)" }
+    },
+
+    "dark": {
+      "background":            { "hex": "#020618", "oklch": "oklch(0.129 0.042 264.695)" },
+      "foreground":            { "hex": "#F8FAFC", "oklch": "oklch(0.984 0.003 247.858)" },
+      "card":                  { "hex": "#0F172B", "oklch": "oklch(0.208 0.042 265.755)" },
+      "cardForeground":        { "hex": "#F8FAFC", "oklch": "oklch(0.984 0.003 247.858)" },
+      "popover":               { "hex": "#0F172B", "oklch": "oklch(0.208 0.042 265.755)" },
+      "popoverForeground":     { "hex": "#F8FAFC", "oklch": "oklch(0.984 0.003 247.858)" },
+      "primary":               { "hex": "#E2E8F0", "oklch": "oklch(0.929 0.013 255.508)" },
+      "primaryForeground":     { "hex": "#0F172B", "oklch": "oklch(0.208 0.042 265.755)" },
+      "secondary":             { "hex": "#1D293D", "oklch": "oklch(0.279 0.041 260.031)" },
+      "secondaryForeground":   { "hex": "#F8FAFC", "oklch": "oklch(0.984 0.003 247.858)" },
+      "muted":                 { "hex": "#1D293D", "oklch": "oklch(0.279 0.041 260.031)" },
+      "mutedForeground":       { "hex": "#90A1B9", "oklch": "oklch(0.704 0.04 256.788)" },
+      "accent":                { "hex": "#1D293D", "oklch": "oklch(0.279 0.041 260.031)" },
+      "accentForeground":      { "hex": "#F8FAFC", "oklch": "oklch(0.984 0.003 247.858)" },
+      "destructive":           { "hex": "#FF6467", "oklch": "oklch(0.704 0.191 22.216)" },
+      "destructiveForeground": { "hex": "#F8FAFC", "oklch": "oklch(0.984 0.003 247.858)" },
+      "border":                { "hex": "#FFFFFF1A", "oklch": "oklch(1 0 0 / 10%)" },
+      "input":                 { "hex": "#FFFFFF26", "oklch": "oklch(1 0 0 / 15%)" },
+      "ring":                  { "hex": "#6A7282", "oklch": "oklch(0.551 0.027 264.364)" }
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "sans": [
+        "ui-sans-serif",
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "Noto Sans",
+        "sans-serif"
+      ],
+      "$comment": "The website uses Tailwind v4's default sans stack (system fonts — no custom webfont loaded). The app should mirror this: on iOS use San Francisco (system), on Android use Roboto (system). If a custom font is later adopted, change it here and update both the website's @theme block and the app's theme."
+    },
+
+    "fontWeight": {
+      "regular":  400,
+      "medium":   500,
+      "semibold": 600,
+      "bold":     700
+    },
+
+    "letterSpacing": {
+      "tight":  "-0.025em",
+      "normal": "0em"
+    },
+
+    "fontSize": {
+      "xs":   { "size": "0.75rem",  "px": 12, "lineHeight": "1rem"     },
+      "sm":   { "size": "0.875rem", "px": 14, "lineHeight": "1.25rem"  },
+      "base": { "size": "1rem",     "px": 16, "lineHeight": "1.5rem"   },
+      "lg":   { "size": "1.125rem", "px": 18, "lineHeight": "1.75rem"  },
+      "xl":   { "size": "1.25rem",  "px": 20, "lineHeight": "1.75rem"  },
+      "2xl":  { "size": "1.5rem",   "px": 24, "lineHeight": "2rem"     },
+      "3xl":  { "size": "1.875rem", "px": 30, "lineHeight": "2.25rem"  },
+      "4xl":  { "size": "2.25rem",  "px": 36, "lineHeight": "2.5rem"   },
+      "5xl":  { "size": "3rem",     "px": 48, "lineHeight": "1"        },
+      "6xl":  { "size": "3.75rem",  "px": 60, "lineHeight": "1"        },
+      "7xl":  { "size": "4.5rem",   "px": 72, "lineHeight": "1"        }
+    },
+
+    "textStyles": {
+      "displayHero": {
+        "$description": "Used on landing hero: 'Quoting, beautifully simple.'",
+        "fontSize":     { "mobile": "4xl", "tablet": "5xl", "desktop": "6xl" },
+        "fontWeight":   "semibold",
+        "letterSpacing":"tight",
+        "color":        "foreground"
+      },
+      "displayH1": {
+        "fontSize":     { "mobile": "3xl", "desktop": "4xl" },
+        "fontWeight":   "semibold",
+        "letterSpacing":"tight",
+        "color":        "foreground"
+      },
+      "h2": {
+        "fontSize":     { "mobile": "2xl", "desktop": "3xl" },
+        "fontWeight":   "semibold",
+        "letterSpacing":"tight",
+        "color":        "foreground"
+      },
+      "h3": {
+        "fontSize":     { "mobile": "xl", "desktop": "2xl" },
+        "fontWeight":   "semibold",
+        "color":        "foreground"
+      },
+      "bodyLead": {
+        "$description": "Hero/section sub-headline body.",
+        "fontSize":     { "mobile": "base", "desktop": "lg" },
+        "fontWeight":   "regular",
+        "color":        "mutedForeground"
+      },
+      "body": {
+        "fontSize":     "base",
+        "fontWeight":   "regular",
+        "color":        "foreground"
+      },
+      "bodySmall": {
+        "fontSize":     "sm",
+        "fontWeight":   "regular",
+        "color":        "mutedForeground"
+      },
+      "caption": {
+        "$description": "Legal / fine print.",
+        "fontSize":     "xs",
+        "fontWeight":   "regular",
+        "color":        "mutedForeground"
+      },
+      "buttonLabel": {
+        "fontSize":     "sm",
+        "fontWeight":   "medium",
+        "color":        "primaryForeground"
+      }
+    }
+  },
+
+  "radius": {
+    "$base":  "1rem",
+    "sm":     "0.75rem",
+    "md":     "0.875rem",
+    "lg":     "1rem",
+    "xl":     "1.25rem",
+    "2xl":    "1.5rem",
+    "3xl":    "1.75rem",
+    "4xl":    "2rem",
+    "full":   "9999px"
+  },
+
+  "shadow": {
+    "$comment": "Website uses Tailwind defaults (shadow-sm, shadow-md, shadow-lg). Mirror these on the app for consistency.",
+    "sm":  "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+    "md":  "0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10)",
+    "lg":  "0 10px 15px -3px rgb(0 0 0 / 0.10), 0 4px 6px -4px rgb(0 0 0 / 0.10)",
+    "xl":  "0 20px 25px -5px rgb(0 0 0 / 0.10), 0 8px 10px -6px rgb(0 0 0 / 0.10)"
+  },
+
+  "spacing": {
+    "$comment": "Tailwind's 0.25rem (4px) baseline grid. The website composes spacing from this scale; the app should follow the same multiples so vertical rhythm matches.",
+    "unit": "0.25rem",
+    "scale": [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24]
+  }
+}

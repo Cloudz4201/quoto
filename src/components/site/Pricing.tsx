@@ -1,6 +1,18 @@
 import { Reveal } from "@/components/site/Reveal";
 
-const plans = [
+type Feature = string | { label: string; comingSoon: true };
+
+type Plan = {
+  name: string;
+  price: string;
+  period: string | null;
+  desc: string;
+  features: Feature[];
+  cta: string;
+  highlight: boolean;
+};
+
+const plans: Plan[] = [
   {
     name: "Starter",
     price: "Free",
@@ -24,8 +36,8 @@ const plans = [
     features: [
       "Unlimited quotes",
       "Custom branding & logo",
-      "Xero & MYOB sync",
-      "ServiceM8 & Tradify sync",
+      { label: "Xero & MYOB sync", comingSoon: true },
+      { label: "ServiceM8 & Tradify sync", comingSoon: true },
       "Quote acceptance & signatures",
       "Follow-up reminders",
       "Priority support",
@@ -106,12 +118,23 @@ export function Pricing() {
                 </div>
 
                 <ul className="mt-8 flex flex-1 flex-col gap-3">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-foreground">
-                      <Check />
-                      {f}
-                    </li>
-                  ))}
+                  {plan.features.map((f) => {
+                    const label = typeof f === "string" ? f : f.label;
+                    const comingSoon = typeof f === "object";
+                    return (
+                      <li key={label} className="flex items-start gap-2 text-sm text-foreground">
+                        <Check />
+                        <span className="flex-1">
+                          {label}
+                          {comingSoon && (
+                            <span className="ml-2 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                              Coming soon
+                            </span>
+                          )}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
 
                 <a
