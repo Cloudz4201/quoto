@@ -4,40 +4,39 @@ export function GooglePlayBadge({ className = "" }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 144 48"
+      viewBox="0 0 119.66407 40"
       className={className}
       role="img"
       aria-label="Get it on Google Play"
     >
-      <rect width="144" height="48" rx="7" fill="#000" />
       <rect
         x="0.5"
         y="0.5"
-        width="143"
-        height="47"
-        rx="6.5"
-        fill="none"
+        width="118.66407"
+        height="39"
+        rx="5"
+        fill="#000"
         stroke="#A6A6A6"
         strokeWidth="1"
       />
 
-      <g transform="translate(11 11)">
+      <g transform="translate(10 7)">
         <defs>
           <linearGradient id="gp-blue" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#00A0FF" />
             <stop offset="1" stopColor="#00E2FF" />
           </linearGradient>
-          <linearGradient id="gp-red" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FF3A44" />
-            <stop offset="1" stopColor="#C31162" />
+          <linearGradient id="gp-green" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#00F076" />
+            <stop offset="1" stopColor="#00A95C" />
           </linearGradient>
           <linearGradient id="gp-yellow" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#FFE000" />
             <stop offset="1" stopColor="#FFBD00" />
           </linearGradient>
-          <linearGradient id="gp-green" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#00F076" />
-            <stop offset="1" stopColor="#00A95C" />
+          <linearGradient id="gp-red" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FF3A44" />
+            <stop offset="1" stopColor="#C31162" />
           </linearGradient>
         </defs>
 
@@ -48,21 +47,21 @@ export function GooglePlayBadge({ className = "" }: Props) {
       </g>
 
       <text
-        x="42"
-        y="19"
+        x="38"
+        y="17"
         fill="#FFFFFF"
-        fontSize="7.5"
+        fontSize="7"
         fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
-        letterSpacing="0.6"
+        letterSpacing="0.5"
       >
         GET IT ON
       </text>
       <text
-        x="42"
-        y="36"
+        x="38"
+        y="32"
         fill="#FFFFFF"
-        fontSize="16"
-        fontWeight="500"
+        fontSize="14"
+        fontWeight="600"
         fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
       >
         Google Play
