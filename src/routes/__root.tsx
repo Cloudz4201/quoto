@@ -9,6 +9,16 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import {
+  SITE_DESCRIPTION,
+  SITE_LANG,
+  SITE_LOCALE,
+  SITE_NAME,
+  SITE_THEME_COLOR,
+  SITE_URL,
+  SUPPORT_EMAIL,
+  absoluteUrl,
+} from "@/lib/site";
 
 function NotFoundComponent() {
   return (
@@ -67,21 +77,64 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const ROOT_OG_IMAGE = absoluteUrl("/og-image.jpg");
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: absoluteUrl("/favicon.png"),
+  email: SUPPORT_EMAIL,
+  description: SITE_DESCRIPTION,
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: SITE_LANG,
+  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "JobSlip | Simple Quoting App for Tradies" },
-      { name: "description", content: "JobSlip is a simple, modern quoting app for tradies. Build, send and track quotes in seconds — with Xero, ServiceM8 and the tools you already use." },
-      { property: "og:site_name", content: "JobSlip" },
+      { title: `${SITE_NAME} | Simple Quoting App for Tradies` },
+      { name: "description", content: SITE_DESCRIPTION },
+      { name: "theme-color", content: SITE_THEME_COLOR },
+      { name: "format-detection", content: "telephone=no" },
+      { name: "application-name", content: SITE_NAME },
+      { name: "apple-mobile-web-app-title", content: SITE_NAME },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
+      { property: "og:site_name", content: SITE_NAME },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: SITE_LOCALE },
+      { property: "og:image", content: ROOT_OG_IMAGE },
+      { property: "og:image:alt", content: `${SITE_NAME} — simple quoting app for tradies` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ROOT_OG_IMAGE },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/manifest.json" },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify(organizationSchema),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(websiteSchema),
       },
     ],
   }),
@@ -93,7 +146,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang={SITE_LANG}>
       <head>
         <HeadContent />
       </head>

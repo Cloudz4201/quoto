@@ -1,0 +1,24 @@
+{
+  "name": "Quoto — Simple Quoting App for Tradies",
+  "short_name": "Quoto",
+  "description": "Quoto is a simple, modern quoting app for tradies. Build, send and track quotes in seconds.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF7",
+  "theme_color": "#4F6BFF",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -2,42 +2,63 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { StoreButtons } from "@/components/site/StoreButtons";
 import { Reveal } from "@/components/site/Reveal";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Pricing } from "@/components/site/Pricing";
+import { SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/site";
 import phoneMockup from "@/assets/phone-mockup.png";
-import ogImage from "@/assets/og-image.jpg";
+import featureQuotes from "@/assets/features/quotes-in-a-minute.png";
+import featureTradies from "@/assets/features/built-for-tradies.png";
+import featureTrack from "@/assets/features/track-every-quote.png";
+import featureStack from "@/assets/features/plays-nice-with-stack.png";
+import stepBuild from "@/assets/steps/01-build-the-quote.png";
+import stepSend from "@/assets/steps/02-send-it-instantly.png";
+import stepSync from "@/assets/steps/03-sync-with-your-tools.png";
+
+const HOME_TITLE = `${SITE_NAME} | Simple Quoting App for Tradies`;
+const HOME_DESCRIPTION =
+  "Quoto is the quoting app built for tradies. Send professional, branded quotes from the ute in under a minute, track every job, and sync approved quotes with Xero, ServiceM8 and the tools you already use.";
+const HOME_OG_IMAGE = absoluteUrl("/og-image.jpg");
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: SITE_NAME,
+  description: HOME_DESCRIPTION,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "iOS, Android",
+  url: SITE_URL,
+  image: HOME_OG_IMAGE,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "AUD",
+  },
+  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "JobSlip | Simple Quoting App for Tradies" },
-      {
-        name: "description",
-        content:
-          "JobSlip is a simple, modern quoting app for tradies. Build, send and track quotes in seconds — with Xero, ServiceM8 and the tools you already use.",
-      },
-      {
-        name: "keywords",
-        content:
-          "JobSlip, quoting app, tradie quoting app, quote app for tradies, Xero quoting, ServiceM8 integration, mobile quoting tool, electrician plumber builder quotes",
-      },
-      { property: "og:title", content: "JobSlip | Simple Quoting App for Tradies" },
-      {
-        property: "og:description",
-        content:
-          "Build, send and track quotes in seconds. Works beautifully with Xero, ServiceM8 and the tools tradies already use.",
-      },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESCRIPTION },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: ogImage },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: HOME_OG_IMAGE },
+      { property: "og:image:alt", content: `${SITE_NAME} — simple quoting app for tradies` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "JobSlip | Simple Quoting App for Tradies" },
-      {
-        name: "twitter:description",
-        content:
-          "Build, send and track quotes in seconds. Works with Xero, ServiceM8 and the tools tradies already use.",
-      },
-      { name: "twitter:image", content: ogImage },
+      { name: "twitter:title", content: HOME_TITLE },
+      { name: "twitter:description", content: HOME_DESCRIPTION },
+      { name: "twitter:image", content: HOME_OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: SITE_URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(softwareSchema),
+      },
+    ],
   }),
   component: Home,
 });
@@ -46,51 +67,54 @@ const features = [
   {
     title: "Quotes in under a minute",
     desc: "Add line items, labour and materials on site — send a professional quote before you leave the driveway.",
-    icon: <path d="M5 12l5 5L20 7" />,
+    image: featureQuotes,
   },
   {
     title: "Built for tradies",
     desc: "Designed for one-handed, on-the-job use. Big tap targets, fast input, no clutter.",
-    icon: <path d="M14 7l-1.5-1.5a2 2 0 00-2.83 0L4 11.17V14h2.83l5.67-5.67a2 2 0 000-2.83zM14 7l3 3M5 21h14" />,
+    image: featureTradies,
   },
   {
     title: "Track every quote",
     desc: "See what's sent, viewed, accepted or declined — and follow up without digging through emails.",
-    icon: <path d="M3 3v18h18M7 14l4-4 4 4 5-6" />,
+    image: featureTrack,
   },
   {
     title: "Plays nice with your stack",
     desc: "Push approved quotes straight to Xero, sync jobs with ServiceM8 and keep your existing workflow.",
-    icon: <path d="M4 7h16M4 12h16M4 17h10" />,
+    image: featureStack,
   },
 ];
 
 const steps = [
-  { n: "01", title: "Build the quote", desc: "Add the customer, labour, materials and a call-out fee in a few taps." },
-  { n: "02", title: "Send it instantly", desc: "Email a clean, branded quote your customer can accept on their phone." },
-  { n: "03", title: "Sync with your tools", desc: "Approved quotes flow to Xero and ServiceM8 — no double entry." },
+  { n: "01", title: "Build the quote", desc: "Add the customer, labour, materials and a call-out fee in a few taps.", image: stepBuild },
+  { n: "02", title: "Send it instantly", desc: "Email a clean, branded quote your customer can accept on their phone.", image: stepSend },
+  { n: "03", title: "Sync with your tools", desc: "Approved quotes flow to Xero and ServiceM8 — no double entry.", image: stepSync },
 ];
 
-const integrations = ["Xero", "ServiceM8", "MYOB", "QuickBooks", "Tradify", "Stripe"];
+const integrations: { name: string; logo: string }[] = [
+  { name: "Xero", logo: "/integrations/xero.svg" },
+  { name: "ServiceM8", logo: "/integrations/servicem8.webp" },
+  { name: "MYOB", logo: "/integrations/myob.svg" },
+  { name: "QuickBooks", logo: "/integrations/quickbooks.svg" },
+  { name: "Tradify", logo: "/integrations/tradify.png" },
+  { name: "Stripe", logo: "/integrations/stripe.svg" },
+];
 
 function Home() {
   return (
     <Layout>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 pt-14 pb-20 sm:pt-20 sm:pb-28 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 pt-6 pb-16 sm:pt-10 sm:pb-20 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Available on iOS and Android
-            </span>
-            <h1 className="mt-6 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Quoting,
               <br />
               <span className="text-primary">beautifully simple.</span>
             </h1>
             <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
-              JobSlip is the quoting app built for tradies. Send professional quotes from the ute, track every job and sync with the tools you already use — Xero, ServiceM8 and more.
+              Quoto is the quoting app built for tradies. Send professional quotes from the ute, track every job and sync with the tools you already use — Xero, ServiceM8 and more.
             </p>
             <StoreButtons className="mt-8" />
             <p className="mt-5 text-xs text-muted-foreground">
@@ -101,7 +125,7 @@ function Home() {
             <div className="absolute inset-0 -z-10 rounded-[3rem] bg-gradient-to-br from-primary/10 via-transparent to-transparent blur-3xl" />
             <img
               src={phoneMockup}
-              alt="JobSlip quoting app shown on iPhone"
+              alt="Quoto quoting app shown on iPhone"
               width={1024}
               height={1536}
               className="w-[260px] drop-shadow-2xl sm:w-[320px] lg:w-[400px]"
@@ -112,10 +136,16 @@ function Home() {
 
       {/* Integrations strip */}
       <section aria-label="Integrations" className="border-y border-border/60 bg-secondary/40">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 py-6 text-sm font-medium text-muted-foreground sm:gap-x-14">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-6 py-6 sm:gap-x-12">
           <span className="text-xs uppercase tracking-wider text-muted-foreground/80">Integrates with</span>
-          {integrations.map((name) => (
-            <span key={name} className="text-foreground/70">{name}</span>
+          {integrations.map(({ name, logo }) => (
+            <img
+              key={name}
+              src={logo}
+              alt={`${name} logo`}
+              loading="lazy"
+              className="h-6 w-auto opacity-80 transition hover:opacity-100 sm:h-7"
+            />
           ))}
         </div>
       </section>
@@ -136,14 +166,21 @@ function Home() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((f, i) => (
               <Reveal key={f.title} delay={i * 80}>
-                <div className="h-full rounded-2xl border border-border/70 bg-card p-6 transition duration-300 hover:-translate-y-0.5 hover:shadow-sm">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-primary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-                      {f.icon}
-                    </svg>
-                  </span>
-                  <h3 className="mt-5 text-base font-semibold text-foreground">{f.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+                <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card transition duration-300 hover:-translate-y-0.5 hover:shadow-sm">
+                  <div className="flex items-center justify-center bg-background px-6 pt-6 pb-2">
+                    <img
+                      src={f.image}
+                      alt=""
+                      width={1024}
+                      height={1024}
+                      loading="lazy"
+                      className="h-32 w-32 object-contain transition duration-300 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-base font-semibold text-foreground">{f.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -167,16 +204,32 @@ function Home() {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 100}>
-                <div className="h-full rounded-2xl border border-border/70 bg-card p-8">
-                  <span className="text-sm font-medium text-primary">{s.n}</span>
-                  <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card transition duration-300 hover:-translate-y-0.5 hover:shadow-sm">
+                  <div className="flex items-center justify-center bg-background px-8 pt-8 pb-4">
+                    <img
+                      src={s.image}
+                      alt=""
+                      width={1024}
+                      height={1024}
+                      loading="lazy"
+                      className="h-40 w-40 object-contain transition duration-300 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-8">
+                    <span className="text-sm font-medium text-primary">{s.n}</span>
+                    <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
+
+      <Testimonials />
+
+      <Pricing />
 
       {/* Integrations callout */}
       <section className="py-20 sm:py-28">
@@ -189,14 +242,20 @@ function Home() {
                     Works with the tools you already use.
                   </h2>
                   <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-                    JobSlip slots into your existing stack. Push approved quotes to Xero, keep jobs in sync with ServiceM8 and avoid double entry.
+                    Quoto slots into your existing stack. Push approved quotes to Xero, keep jobs in sync with ServiceM8 and avoid double entry.
                   </p>
                 </div>
                 <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {integrations.map((name, i) => (
+                  {integrations.map(({ name, logo }, i) => (
                     <Reveal as="li" key={name} delay={i * 60}>
-                      <div className="flex items-center justify-center rounded-xl border border-border/70 bg-background px-4 py-4 text-sm font-medium text-foreground">
-                        {name}
+                      <div className="flex h-20 items-center justify-center rounded-xl border border-border/70 bg-background px-4 py-4">
+                        <img
+                          src={logo}
+                          alt={`${name} logo`}
+                          loading="lazy"
+                          className="max-h-8 w-auto object-contain"
+                        />
+                        <span className="sr-only">{name}</span>
                       </div>
                     </Reveal>
                   ))}
@@ -216,7 +275,7 @@ function Home() {
                 Start quoting smarter today.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-                Download JobSlip on the App Store or Google Play and send your first quote in minutes.
+                Download Quoto on the App Store or Google Play and send your first quote in minutes.
               </p>
               <div className="mt-8 flex justify-center">
                 <StoreButtons />

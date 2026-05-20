@@ -1,2 +1,6 @@
+# Quoto — quoto.app
 User-agent: *
 Allow: /
+Disallow: /__debug
+
+Sitemap: https://quoto.app/sitemap.xml
