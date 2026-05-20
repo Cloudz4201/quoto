@@ -24,7 +24,7 @@ export function StoreButtons({ className = "" }: { className?: string }) {
           alt="Get it on Google Play"
           width={181}
           height={70}
-          className="h-11 w-auto"
+          className="h-[62px] w-auto"
         />
       </a>
     </div>

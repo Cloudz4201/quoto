@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Header now includes a full mobile hamburger menu (visible on screens < 640px) with all nav links and a "Get the app" CTA — previously the entire nav was hidden on mobile with no fallback.
 - Added "Pricing" link to site navigation pointing to `/#pricing`.
 - Store badge heights normalised to `h-11` (44px) for both App Store and Google Play — previously App Store was 48px and Google Play was 70px.
+- Google Play badge height increased to `h-[62px]` to compensate for ~25% internal padding in the PNG, making it visually match the App Store badge at `h-11`.
 - Pricing plan CTAs replaced with proper styled buttons — previously used store image badges which conveyed the wrong intent and had no visual effect from applied classes.
 
 ### Added
