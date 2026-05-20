@@ -11,7 +11,7 @@ export function StoreButtons({ className = "" }: { className?: string }) {
           alt="Download on the App Store"
           width={144}
           height={48}
-          className="h-11 w-auto"
+          className="h-auto w-40"
         />
       </a>
       <a
@@ -24,7 +24,7 @@ export function StoreButtons({ className = "" }: { className?: string }) {
           alt="Get it on Google Play"
           width={181}
           height={70}
-          className="h-[62px] w-auto"
+          className="h-auto w-40"
         />
       </a>
     </div>

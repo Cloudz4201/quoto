@@ -11,8 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hero section top padding reduced so content sits closer to the top of the viewport.
 - Header now includes a full mobile hamburger menu (visible on screens < 640px) with all nav links and a "Get the app" CTA — previously the entire nav was hidden on mobile with no fallback.
 - Added "Pricing" link to site navigation pointing to `/#pricing`.
-- Store badge heights normalised to `h-11` (44px) for both App Store and Google Play — previously App Store was 48px and Google Play was 70px.
-- Google Play badge height increased to `h-[62px]` to compensate for ~25% internal padding in the PNG, making it visually match the App Store badge at `h-11`.
+- Store badges now sized by width (`w-40 h-auto`) instead of by height, so both buttons have a matching horizontal footprint when stacked vertically on mobile and look balanced side-by-side on desktop. Previously height-based sizing caused width and visual-weight mismatches because the Google Play PNG has significant internal padding that the App Store SVG does not.
 - Pricing plan CTAs replaced with proper styled buttons — previously used store image badges which conveyed the wrong intent and had no visual effect from applied classes.
 
 ### Added
