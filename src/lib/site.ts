@@ -9,7 +9,7 @@ export const SITE_DESCRIPTION =
 export const SITE_LOCALE = "en_AU";
 export const SITE_LANG = "en-AU";
 export const SITE_THEME_COLOR = "#4F6BFF";
-export const SUPPORT_EMAIL = "support@quoto.app";
+export const SUPPORT_EMAIL = "support@getquoto.com.au";
 
 // Geo targeting — Quoto is built for Australian tradies. Used in Organization
 // JSON-LD so search engines can localise rich results to en-AU.
